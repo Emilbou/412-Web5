@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.7.1/gsap.min.js"></script>
+   <link rel="stylesheet" href="style.css">
+
+
+</head>
+
+<body>
+
+<header class="header">
+   <h1 class="header__title">The Wind</h1>
+</header>
+
+
+
+    <section class="animation-content-section-main header-post-content">
+        <h2 class="animation-content-title">In a world where the creative breeze was ever-present, different elements came together to form a harmonious
+            whole.
+        </h2>
+        <section class="animation-content-alignement">
+            <div class=" animation-content-square-container-flag">
+                <div class="animation-flag"></div>
+            </div>
+            <div class="animation-content-section">
+                <h2 class="animation-content-subtitle">The Canadian Flag</h2>
+                <p class="animation-content-text">At the top of a hill, a Canadian flag stood tall, animated by the aerial currents. It embodied
+                    national pride carried by
+                    these dynamic flows.
+                </p>
+                <p class="animation-content-text-tools">Created with : <span class="animation-content-text-tools-span">StyleSheet</span></p>
+            </div>
+        </section>
+        <section class="animation-content-alignement">
+            <div class="animation-content-section">
+                <h2 class="animation-content-subtitle">The Windmill</h2>
+                <p class="animation-content-text">Close by, a miniature windmill turned slowly, narrating the ancient history of the region and the wisdom of time.
+                </p>
+                <p class="animation-content-text-tools">Created with : <span class="animation-content-text-tools-span">GSAPP</span></p>
+            </div>
+            <div class="animation-moulin animation-content-square-container">
+
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 355.89 546.63">
+                    <defs>
+
+                    </defs>
+                    <g id="Calque_2" data-name="Calque 2">
+                        <g id="Moulin">
+                            <rect id="stick" class="cls-1" x="170.63" y="172.33" width="13.79" height="374.3"
+                                rx="6.89" />
+                            <path id="Orange" class="cls-2"
+                                d="M164.08,103.33C171.64,142.61,178,178,178,178s35.33-6.31,74.61-13.87c44.85-8.63,94.84-18.89,103.33-23.27C265.47,62.79,210.63,93.36,164.08,103.33Z" />
+                            <path id="Red" class="cls-3"
+                                d="M164.08,103.33C155.45,58.48,145.19,8.49,140.81,0c-78,90.43-47.45,145.26-37.48,191.82C142.61,184.25,178,178,178,178S171.64,142.61,164.08,103.33Z" />
+                            <path id="Blue" class="cls-4"
+                                d="M252.56,164.08C213.28,171.64,178,178,178,178s6.3,35.33,13.86,74.61c8.64,44.85,18.9,94.84,23.27,103.33C293.1,265.47,262.54,210.63,252.56,164.08Z" />
+                            <path id="Green" class="cls-5"
+                                d="M178,178s-35.34,6.3-74.62,13.87C58.48,200.45,8.49,210.71,0,215.08c90.43,78,145.26,47.46,191.81,37.48C184.25,213.28,178,178,178,178Z" />
+                        </g>
+                    </g>
+                </svg>
+            </div>
+
+
+        </section>
+
+        <section class="animation-content-alignement">
+            <div id="animation-container" class="animation-content-square-container"
+                style="position: relative;">
+                <img id="cerf-volant" src="assets/animation/Kite/Fichier 9.svg"
+                    style="width: 200px; position: absolute; top: 0; left: 0;">
+
+            </div>
+            <div class="animation-content-section">
+                <h2 class="animation-content-subtitle animation-content-kite-important">The Kite</h2>
+                <p class="animation-content-text">Further along, a multicolored kite soared in the sky, symbolizing the quest for freedom carried by the winds.
+                </p>
+                <p class="animation-content-text-tools">Created with : <span class="animation-content-text-tools-span">JavaScript</span></p>
+            </div>
+
+        </section>
+        <section class="animation-content-alignement animaiton-content-last-element">
+            <div class="animation-content-section">
+                <h2 class="animation-content-subtitle">The Floating Leaf</h2>
+                <p class="animation-content-text">Suddenly, a light leaf detached itself, evoking the fleeting beauty and fragility of life.
+                </p>
+                <p class="animation-content-text-tools">Created with : <span class="animation-content-text-tools-span">StyleSheet</span></p>
+            </div>
+            <div class=" animation-content-square-container">
+                <div class="animation-leaf"></div>
+            </div>
+        </section>
+    </section>
+</body>
+<footer class="footer-content">
+    <p class="footer-content-text">Web3 2023 <br> Emilien Boucard</p>
+</footer>
+<script>
+    const cerfVolant = document.getElementById('cerf-volant');
+    const animationContainer = document.getElementById('animation-container');
+
+    let vitesse = 2;
+    let direction = 1; // 1 pour aller vers la droite, -1 pour aller vers la gauche
+
+    function deplacerCerfVolant() {
+        const positionX = parseFloat(cerfVolant.style.left);
+        const largeurBoite = animationContainer.clientWidth;
+        const largeurCerfVolant = cerfVolant.clientWidth;
+
+        if (positionX >= largeurBoite - largeurCerfVolant && direction === 1) {
+            direction = -1; // Changement de direction vers la gauche
+        } else if (positionX <= 0 && direction === -1) {
+            direction = 1; // Changement de direction vers la droite
+        }
+
+        cerfVolant.style.left = positionX + vitesse * direction + 'px';
+
+        // Ajoutez de la perspective en modifiant la valeur de la profondeur (translateZ)
+        const profondeur = -100; // Ajustez cette valeur selon vos préférences
+        cerfVolant.style.transform = `translateZ(${profondeur}px)`;
+    }
+
+    const animation = setInterval(deplacerCerfVolant, 16);
+</script>
+
+
+</html>
+
+
+<script>
+    let OrangeAnim = gsap.to(
+        "#Orange",
+        {
+            duration: 1,
+            rotation: 360,
+            svgOrigin: "177 177",
+            repeat: -1,
+            ease: Linear.easeNone,
+        }
+    );
+    let RedAnim = gsap.to(
+        "#Red",
+        {
+            duration: 1,
+            rotation: 360,
+            svgOrigin: "177 177",
+            repeat: -1,
+            ease: Linear.easeNone,
+        }
+    );
+    let GreenAnim = gsap.to(
+        "#Green",
+        {
+            duration: 1,
+            rotation: 360,
+            svgOrigin: "177 177",
+            repeat: -1,
+            ease: Linear.easeNone,
+        }
+    );
+    let BlueAnim = gsap.to(
+        "#Blue",
+        {
+            duration: 1,
+            rotation: 360,
+            svgOrigin: "177 177",
+            repeat: -1,
+            ease: Linear.easeNone,
+        }
+    );
+
+
+</script>
